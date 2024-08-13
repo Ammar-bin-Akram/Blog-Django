@@ -132,4 +132,4 @@ AUTH_USER_MODEL = 'blogs.User'
 
 LOGIN_REDIRECT_URL = 'home'
 
-LOGOUT_REDIRECT_URL = 'landing'
+LOGOUT_REDIRECT_URL = '/blogs/'
