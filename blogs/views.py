@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView
-
+from django.http import HttpResponse
 from .forms import CustomUserCreationForm
 
 # Create your views here
@@ -16,4 +16,11 @@ def home(request):
 
 def landing(request):
     return render(request, 'blogs/landing.html')
+
+def create_post(request, user_id):
+    return HttpResponse('Create Post')
+
+
+def read_blog(request, blog_id):
+    return HttpResponse('Read Blog')
 

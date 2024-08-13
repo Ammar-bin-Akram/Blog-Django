@@ -2,7 +2,12 @@
     border-bottom: 1px solid #0d6efd;
 }
 
-.main-home{
+.username{
+    text-decoration: none;
+    color: black;
+}
+
+.main-landing{
     background: url('./images/background.png') no-repeat center center/cover;
     background-size: cover;
     animation: comefromdown 2s forwards;
@@ -78,6 +83,12 @@
 }
 
 .main-signup{
+    background: url('./images/background.png') center center/cover;
+    background-repeat: repeat;
+    background-size: cover;
+}
+
+.main-home{
     background: url('./images/background.png') center center/cover;
     background-repeat: repeat;
     background-size: cover;

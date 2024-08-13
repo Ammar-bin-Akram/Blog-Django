@@ -6,17 +6,11 @@ Bloggs - Home
 {% endblock %}
 
 {% block content %}
-{% if user.is_authenticated %}
-    <div class="mt-5">
-        <h2>You are on the home page after login.</h2>
-        <a href="{% url 'logout' %}">Logout</a>
+    <div class="main-home container-fluid d-flex flex-column justify-content-center align-items-center mt-5">
+        <h1 class="main-h1">Welcome to Bloggs</h1>
+        <div class="container d-flex flex-column justify-content-between align-items-center">
+            <div>On this page, all the posts will be displayed.</div>
+        </div>
     </div>
-    
-{% else %}
-    <div class="mt-5">
-        You are not allowed here.
-        <a href="{% url 'login' %}">Login</a>
-    </div>
-{% endif %}
 {% endblock %}
 
