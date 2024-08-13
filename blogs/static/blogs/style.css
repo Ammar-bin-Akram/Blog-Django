@@ -1,0 +1,84 @@
+.navbar{
+    border-bottom: 1px solid #0d6efd;
+}
+
+.main-home{
+    background: url('./images/background.png') no-repeat center center/cover;
+    background-size: cover;
+    animation: comefromdown 2s forwards;
+}
+
+.main-h1{
+    font-size: 50px;
+    margin-top: 30px;
+}
+
+.main-h1 span{
+    color: #0d6efd;
+}
+
+.main-h2{
+    font-size: 40px;
+}
+
+.main-h2 span{
+    color: #0d6efd;
+}
+
+.main-btns-div div button{
+    width: 200px;
+    height: 54px;
+    border-radius: 8px;
+    border: none;
+    font-size: 20px;
+    color: #0d6efd;
+    padding: 12px 40px;
+    background-color: #fff;
+    transition: 0.3s all ease;
+}
+
+.main-btns-div div button:hover{
+    background-color: #0d6efd;
+    color: #fff;
+}
+
+@keyframes comefromdown {
+    from 0%{
+        transform: translateY(100%);
+        opacity: 0;
+    }
+
+    to 100%{
+        transform: translateY(0%);
+        opacity: 1;
+    }
+}
+
+
+.main-signin{
+    background: url('./images/background.png') no-repeat center center/cover;
+    background-size: cover;
+}
+
+.form-container{
+    backdrop-filter: blur(10px);
+    border: 1px solid #0d6efd;
+    border-radius: 8px;
+}
+
+.sign-btn-div button{
+    background-color: #fff;
+    color: #0d6efd;
+    transition: 0.3s all ease;
+}
+
+.sign-btn-div button:hover{
+    background-color: #0d6efd;
+    color: #fff;
+}
+
+.main-signup{
+    background: url('./images/background.png') center center/cover;
+    background-repeat: repeat;
+    background-size: cover;
+}
