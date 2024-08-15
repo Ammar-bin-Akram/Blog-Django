@@ -6,7 +6,22 @@ Bloggs - Read
 {% endblock %}
 
 {% block content %}
-<div style="margin-top: 100px;">
-    You are reading {{ blog.title }} by a {{ blog.user.username }}.
+<div class="main-read container-fluid d-flex flex-column justify-content-top align-items-left mt-5 p-5">
+    <h1 class="read-h1">{{ blog.title }}</h1>
+    <br>
+    <div class="d-flex flex-column align-items-left">
+        <div class="post-author">
+            <p>Author: <a href="#">{{ blog.user.username }}</a></p>
+        </div>
+        <div>
+            <p>Published On: {{ blog.created_at }}</p>
+        </div>
+    </div>
+    <div class="post-content container px-5">
+        <p>{{ blog.content }}</p>
+    </div>
+    <div class="read-btn-div">
+        <a href="{% url 'home' %}"><button>Home</button></a>
+    </div>
 </div>
 {% endblock %}
