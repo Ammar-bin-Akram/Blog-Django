@@ -6,7 +6,24 @@ Bloggs - create
 {% endblock %}
 
 {% block content %}
-<div>
-    Post is being created by {{ user.username }}
+<div class="main-home container-fluid d-flex flex-column justify-content-evenly align-items-center">
+    <h1 class="main-h1">Create New Post</h1>
+    <div class="container p-2 border border-primary rounded">
+        <form method="post" action="{% url 'create' user_id=user.id %}">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="title" class="font-weight-bold">Title</label>
+                <input type="text" class="form-control" id="title" name="title-post" aria-describedby="titleHelp">
+                <small id="emailHelp" class="form-text text-muted">Always choose a catchy title.</small>
+            </div>
+            <div class="form-group">
+                <label for="content" class="font-weight-bold">Content</label>
+                <textarea class="form-control" id="content" rows="3" name="content-post"></textarea>
+            </div>
+            <div class="d-flex few-row justify-content-center align-items-center mt-3 create-post-btns-div">
+                <button type="submit">Post</button>
+            </div>
+        </form>
+    </div>
 </div>
 {% endblock %}

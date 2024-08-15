@@ -1,9 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView
 from django.http import HttpResponse
 from .forms import CustomUserCreationForm
 from .models import User, Blog
+import datetime
 
 # Create your views here
 
@@ -22,8 +23,18 @@ def landing(request):
 
 def create_post(request, user_id):
     user = User.objects.get(pk=user_id)
-    context = {'user': user}
-    return render(request, 'blogs/create.html', context)
+    context_create = {'user': user}
+    blogs = Blog.objects.all()
+    context_home = {'blogs': blogs}
+    if request.method == "POST":
+        title = request.POST.get('title-post')
+        content = request.POST.get('content-post')
+        created_at = datetime.datetime.now()
+        post = Blog(title=title, content=content,created_at = created_at, user=user)
+        post.save()
+        return redirect('home')
+    else:
+        return render(request, 'blogs/create.html', context=context_create)
 
 
 def read_blog(request, blog_id):

@@ -17,7 +17,7 @@
     <nav class="navbar navbar-expand-lg bg-body-light bg-light fixed-top">
         <div class="container-fluid d-flex flex-row justify-content-around">
             <div>
-                <a class="navbar-brand" href="#">Bloggs</a>
+                <a class="navbar-brand" href="{% url 'landing' %}">Bloggs</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -32,7 +32,7 @@
                             <a class="nav-link" href="#">Read</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Create</a>
+                            <a class="nav-link" href="{% url 'create' user_id=user.id %}">Create</a>
                         </li>
                         <li class="nav-item d-flex align-items-center">
                             <a href="#" class="username">{{ user.username }}</a>

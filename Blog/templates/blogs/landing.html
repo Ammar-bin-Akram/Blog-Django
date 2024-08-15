@@ -17,13 +17,24 @@ Bloggs - Home
             <img src="{% static 'blogs/images/img-2.png' %}" class="img-thumbnail">
         </div>
     </div>
-    <div class="main-btns-div container-fluid d-flex flex-row justify-content-around px-4 my-5">
-        <div>
-            <a href="{% url 'signup' %}"><button>Sign Up</button></a>
+    {% if user.is_authenticated %}
+        <div class="main-btns-div container-fluid d-flex flex-row justify-content-around px-4 my-5">
+            <div>
+                <a href="{% url 'create' user_id=user.id %}"><button>Create</button></a>
+            </div>
+            <div>
+                <a href="{% url 'home' %}"><button>Read</button></a>
+            </div>
         </div>
-        <div>
-            <a href="{% url 'login' %}"><button>Log In</button></a>
+    {% else %}
+        <div class="main-btns-div container-fluid d-flex flex-row justify-content-around px-4 my-5">
+            <div>
+                <a href="{% url 'signup' %}"><button>Sign Up</button></a>
+            </div>
+            <div>
+                <a href="{% url 'login' %}"><button>Log In</button></a>
+            </div>
         </div>
-    </div>
+    {% endif %}
 </div>
 {% endblock %}
