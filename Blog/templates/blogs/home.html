@@ -16,7 +16,7 @@ Bloggs - Home
                             <h5 class="card-title">{{ blog.title }}</h5>
                             <p class="card-text">{{ blog.content }}</p>
                             <p class="card-text">Author: <small class="text-muted">{{ blog.user.username }}</small></p>
-                            <a href="#" class="btn btn-primary">Read Post</a>
+                            <a href="{% url 'read' blog.pk %}" class="btn btn-primary">Read Post</a>
                         </div>
                     </div>
                 {% endfor %}

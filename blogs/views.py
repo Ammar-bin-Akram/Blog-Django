@@ -38,5 +38,7 @@ def create_post(request, user_id):
 
 
 def read_blog(request, blog_id):
-    return HttpResponse('Read Blog')
+    blog = Blog.objects.get(pk=blog_id)
+    context = {'blog': blog}
+    return render(request, 'blogs/read.html', context)
 

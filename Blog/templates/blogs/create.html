@@ -6,9 +6,9 @@ Bloggs - create
 {% endblock %}
 
 {% block content %}
-<div class="main-home container-fluid d-flex flex-column justify-content-evenly align-items-center">
+<div class="main-create container-fluid d-flex flex-column justify-content-evenly align-items-center">
     <h1 class="main-h1">Create New Post</h1>
-    <div class="container p-2 border border-primary rounded">
+    <div class="container p-2 border border-primary rounded create-form-container">
         <form method="post" action="{% url 'create' user_id=user.id %}">
             {% csrf_token %}
             <div class="form-group">

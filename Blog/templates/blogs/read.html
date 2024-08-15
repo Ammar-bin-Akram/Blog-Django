@@ -1,0 +1,12 @@
+{% extends '../base.html' %}
+{% load static %}
+
+{% block title %}
+Bloggs - Read
+{% endblock %}
+
+{% block content %}
+<div style="margin-top: 100px;">
+    You are reading {{ blog.title }} by a {{ blog.user.username }}.
+</div>
+{% endblock %}

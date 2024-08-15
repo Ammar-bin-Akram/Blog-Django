@@ -92,6 +92,13 @@
     background: url('./images/background.png') center center/cover;
     background-repeat: repeat;
     background-size: cover;
+    height: auto;
+}
+
+.main-create{
+    background: url('./images/background.png') center center/cover;
+    background-repeat: repeat;
+    background-size: cover;
     height: 100vh;
 }
 
@@ -110,5 +117,9 @@
 .create-post-btns-div button:hover{
     background-color: #0d6efd;
     color: #fff;
+}
+
+.create-form-container{
+    backdrop-filter: blur(10px);
 }
 
