@@ -5,6 +5,7 @@ from django.http import HttpResponse
 from .forms import CustomUserCreationForm
 from .models import User, Blog
 import datetime
+from django.utils import timezone
 
 # Create your views here
 
@@ -46,7 +47,11 @@ def read_blog(request, blog_id):
 def view_profile(request, user_id):
     user = User.objects.get(pk=user_id)
     blogs = Blog.objects.filter(user=user_id)
-    context = {'user': user, 'blogs': blogs}
+    latest_blog = blogs[0]
+    for blog in blogs:
+        if blog.created_at > latest_blog.created_at:
+            latest_blog = blog
+    context = {'user': user, 'blogs': blogs, 'latest_blog': latest_blog}
     return render(request, 'blogs/profile.html', context)
 
 
@@ -54,4 +59,12 @@ def view_your_posts(request, user_id):
     blogs = Blog.objects.filter(user=user_id)
     context = {'blogs': blogs}
     return render(request, 'blogs/user_posts.html', context)
+
+
+def edit_post(request, blog_id):
+    return HttpResponse('Edit post {}'.format(blog_id))
+
+
+def delete_post(request, blog_id):
+    return HttpResponse('Delete post {}'.format(blog_id))
 

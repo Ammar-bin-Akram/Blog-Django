@@ -6,7 +6,33 @@ Bloggs - User posts
 {% endblock %}
 
 {% block content %}
-<div style="margin-top:30px; padding-top:20px;">
-    Your posts
+<div class="main-home container-fluid d-flex flex-row flex-wrap justify-content-center align-items-center mt-5">
+    <h1 class="main-h1">Your Posts</h1>
+    <div class="container d-flex flex-row flex-wrap justify-content-between align-items-between">
+        {% if blogs %}
+            {% for blog in blogs %}
+                <div class="card mb-3" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ blog.title }}</h5>
+                        <p class="card-text">{{ blog.content }}</p>
+                        <a href="{% url 'edit' blog.pk %}" class="card-link btn btn-primary">Edit</a>
+                        <a href="{% url 'delete' blog.pk %}" class="card-link btn btn-danger">Delete</a>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <div>
+                <h2>Start your creativity journey.</h2>
+            </div>
+            <div class="main-btns-div container-fluid d-flex flex-row justify-content-around px-4 my-5">
+                <div>
+                    <a href="{% url 'create' user_id=user.id  %}"><button>Create</button></a>
+                </div>
+                <div>
+                    <a href="{% url 'logout' %}"><button>Logout</button></a>
+                </div>
+            </div>
+        {% endif %}
+    </div>
 </div>
 {% endblock %}

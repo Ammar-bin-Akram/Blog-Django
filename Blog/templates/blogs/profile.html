@@ -6,9 +6,24 @@ Bloggs - Profile
 {% endblock %}
 
 {% block content %}
-<div style="margin-top: 40px; padding-top: 20px;">
-    <p>{{ user.id }}</p>
-    <p>{{ user.username }}</p>
-    <p>No. of blog posts: {{ blogs|length }}</p>
+<div class="main-home container-fluid d-flex flex-column justify-content-center align-items-center mt-5">
+    <h1 class="main-h1">Your Profile</h1>
+    <div class="container d-flex flex-column justify-content-left">
+        <h2>Personal Information</h2>
+        <div>
+            <p>{{ user.username }}</p>
+            <p>{{ user.first_name }} {{ user.last_name }}</p>
+            <p>{{ user.email }}</p>
+        </div>
+
+        <h2>Your Activity</h2>
+        <div>
+            <p>Number of posts: {{ blogs|length }}</p>
+            <p>number of posts you liked: {{ blogs|length }}</p>
+            <p>Last posted on: {{ latest_blog.created_at }}</p>
+            <p>Last article posted: {{ latest_blog.title }}</p>
+        </div>
+
+    </div>
 </div>
 {% endblock %}
