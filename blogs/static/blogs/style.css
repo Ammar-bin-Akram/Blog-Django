@@ -47,18 +47,6 @@
     color: #fff;
 }
 
-@keyframes comefromdown {
-    from 0%{
-        transform: translateY(100%);
-        opacity: 0;
-    }
-
-    to 100%{
-        transform: translateY(0%);
-        opacity: 1;
-    }
-}
-
 
 .main-signin{
     background: url('./images/background.png') no-repeat center center/cover;

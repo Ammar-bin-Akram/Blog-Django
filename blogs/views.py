@@ -62,9 +62,9 @@ def view_your_posts(request, user_id):
 
 
 def edit_post(request, blog_id):
-    return HttpResponse('Edit post {}'.format(blog_id))
+    return render(request, 'blogs/edit.html')
 
 
 def delete_post(request, blog_id):
-    return HttpResponse('Delete post {}'.format(blog_id))
+    return render(request, 'blogs/delete.html')
 
