@@ -9,7 +9,31 @@ Bloggs - Home
     <div class="main-home container-fluid d-flex flex-column justify-content-center align-items-center mt-5">
         <h1 class="main-h1">Welcome to Bloggs</h1>
         <div class="container d-flex flex-column justify-content-between align-items-center">
-            <div>On this page, all the posts will be displayed.</div>
+            {% if blogs %}
+                {% for blog in blogs %}
+                    <div class="card" style="width: 18rem;">
+                        <img class="card-img-top" src="..." alt="Card image cap">
+                        <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <div>
+                    <h2>Start your creativity journey.</h2>
+                </div>
+                <div class="main-btns-div container-fluid d-flex flex-row justify-content-around px-4 my-5">
+                    <div>
+                        <a href="{% url 'create' user_id=user.id  %}"><button>Create</button></a>
+                    </div>
+                    <div>
+                        <a href=""><button>Logout</button></a>
+                    </div>
+                </div>
+            {% endif %}
+
         </div>
     </div>
 {% endblock %}
