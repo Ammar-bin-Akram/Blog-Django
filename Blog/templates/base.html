@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>{% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'blogs/style.css' %}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -35,7 +35,16 @@
                             <a class="nav-link" href="{% url 'create' user_id=user.id %}">Create</a>
                         </li>
                         <li class="nav-item d-flex align-items-center">
-                            <a href="#" class="username">{{ user.username }}</a>
+                            <div class="dropdown">
+                                <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                  {{ user.username }}
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="{% url 'profile' user_id=user.id %}">Profile</a>
+                                    <a class="dropdown-item" href="{% url 'your_posts' user_id=user.id %}">My Posts</a>
+                                    <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+                                </div>
+                            </div>
                         </li>
                     </ul>
                 </div>
@@ -59,6 +68,11 @@
 
     
     {% block content %}
+    {% endblock %}
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    {% block extra_js %}
     {% endblock %}
 </body>
 </html>

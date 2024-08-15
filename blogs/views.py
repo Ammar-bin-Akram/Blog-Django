@@ -42,3 +42,16 @@ def read_blog(request, blog_id):
     context = {'blog': blog}
     return render(request, 'blogs/read.html', context)
 
+
+def view_profile(request, user_id):
+    user = User.objects.get(pk=user_id)
+    blogs = Blog.objects.filter(user=user_id)
+    context = {'user': user, 'blogs': blogs}
+    return render(request, 'blogs/profile.html', context)
+
+
+def view_your_posts(request, user_id):
+    blogs = Blog.objects.filter(user=user_id)
+    context = {'blogs': blogs}
+    return render(request, 'blogs/user_posts.html', context)
+

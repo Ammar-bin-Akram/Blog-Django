@@ -9,4 +9,6 @@ urlpatterns = [
     path('', views.landing, name='landing'),
     path('create/<int:user_id>/', views.create_post, name='create'),
     path('read/<int:blog_id>/', views.read_blog, name='read'),
+    path('profile/<int:user_id>/', views.view_profile, name='profile'),
+    path('your_posts/<int:user_id>/', views.view_your_posts, name='your_posts'),
 ]
