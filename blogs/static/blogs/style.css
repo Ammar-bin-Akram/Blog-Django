@@ -84,9 +84,9 @@
 }
 
 .main-create{
-    background: url('./images/background.png') center center/cover;
+    background: url('./images/background.png') center center;
     background-repeat: repeat;
-    background-size: cover;
+    background-size: auto;
     height: 100vh;
 }
 
@@ -147,6 +147,13 @@
 
 .post-content p{
     font-size: 20px;
+}
+
+.main-user-posts{
+    background: url('./images/background.png') center center/cover;
+    background-repeat: repeat;
+    background-size: cover;
+    height: 100vh;
 }
 
 

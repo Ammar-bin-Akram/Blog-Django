@@ -18,3 +18,8 @@ class Blog(models.Model):
     content = models.TextField()
     created_at = models.DateTimeField()
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+
+class Likes(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    blog = models.ForeignKey(Blog, on_delete=models.CASCADE)

@@ -3,7 +3,7 @@ from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView
 from django.http import HttpResponse
 from .forms import CustomUserCreationForm
-from .models import User, Blog
+from .models import User, Blog, Likes
 import datetime
 from django.utils import timezone
 
@@ -53,6 +53,13 @@ def view_profile(request, user_id):
             latest_blog = blog
     context = {'user': user, 'blogs': blogs, 'latest_blog': latest_blog}
     return render(request, 'blogs/profile.html', context)
+
+def like_post(request, blog_id, user_id):
+    blog = Blog.objects.get(pk=blog_id)
+    user = User.objects.get(pk=user_id)
+    like = Likes(user=user, blog=blog)
+    like.save()
+    return redirect('home')
 
 
 def view_your_posts(request, user_id):
