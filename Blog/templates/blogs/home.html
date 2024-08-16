@@ -13,7 +13,10 @@ Bloggs - Home
                 {% for blog in blogs %}
                     <div class="card mb-3" style="width: 18rem;">
                         <div class="card-body">
-                            <h5 class="card-title">{{ blog.title }}</h5>
+                            <div class="d-flex flex-row justify-content-between">
+                                <h5 class="card-title">{{ blog.title }}</h5>
+                                <h6>2 Likes</h6>
+                            </div>
                             <p class="card-text">{{ blog.content|truncatechars:100 }}</p>
                             <p class="card-text">Author: <small class="text-muted">{{ blog.user.username }}</small></p>
                             <a href="{% url 'read' blog.pk %}" class="btn btn-primary">Read Post</a>

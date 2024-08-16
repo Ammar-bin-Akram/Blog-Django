@@ -150,10 +150,17 @@
 }
 
 .main-user-posts{
-    background: url('./images/background.png') center center/cover;
+    background: url('./images/background.png') center center;
     background-repeat: repeat;
     background-size: cover;
-    height: 100vh;
+}
+
+.post-btn{
+    background-color: blue;
+}
+
+.post-btn:hover{
+    background-color: darkblue;
 }
 
 

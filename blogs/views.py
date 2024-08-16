@@ -16,7 +16,8 @@ class SignUpView(CreateView):
 
 def home(request):
     blogs = Blog.objects.all()
-    context = {'blogs': blogs}
+    likes = Likes.objects.all()
+    context = {'blogs': blogs, 'likes': likes}
     return render(request, 'blogs/home.html', context)
 
 def landing(request):
@@ -47,11 +48,13 @@ def read_blog(request, blog_id):
 def view_profile(request, user_id):
     user = User.objects.get(pk=user_id)
     blogs = Blog.objects.filter(user=user_id)
+    likes = Likes.objects.filter(user_id=user_id, blog__in=blogs)
+    total_likes = likes.count()
     latest_blog = blogs[0]
     for blog in blogs:
         if blog.created_at > latest_blog.created_at:
             latest_blog = blog
-    context = {'user': user, 'blogs': blogs, 'latest_blog': latest_blog}
+    context = {'user': user, 'blogs': blogs, 'latest_blog': latest_blog, 'total_likes': total_likes}
     return render(request, 'blogs/profile.html', context)
 
 def like_post(request, blog_id, user_id):
@@ -90,4 +93,5 @@ def delete_post(request, blog_id):
         return redirect('home')
     else:
         return render(request, 'blogs/delete.html', context)
+
 
