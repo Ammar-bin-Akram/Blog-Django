@@ -31,7 +31,7 @@ def create_post(request, user_id):
         title = request.POST.get('title-post')
         content = request.POST.get('content-post')
         created_at = datetime.datetime.now()
-        post = Blog(title=title, content=content,created_at = created_at, user=user)
+        post = Blog(title=title, content=content, created_at = created_at, user=user)
         post.save()
         return redirect('home')
     else:
@@ -62,9 +62,25 @@ def view_your_posts(request, user_id):
 
 
 def edit_post(request, blog_id):
-    return render(request, 'blogs/edit.html')
+    blog = Blog.objects.get(pk=blog_id)
+    context = {'blog': blog}
+    if request.method == "POST":
+        new_title = request.POST.get('title-post')
+        new_content = request.POST.get('content-post')
+        blog.title = new_title
+        blog.content = new_content
+        blog.save()
+        return redirect('home')
+    else:
+        return render(request, 'blogs/edit.html', context)
 
 
 def delete_post(request, blog_id):
-    return render(request, 'blogs/delete.html')
+    blog = Blog.objects.get(pk=blog_id)
+    context = {'blog': blog}
+    if request.method == "POST":
+        blog.delete()
+        return redirect('home')
+    else:
+        return render(request, 'blogs/delete.html', context)
 
