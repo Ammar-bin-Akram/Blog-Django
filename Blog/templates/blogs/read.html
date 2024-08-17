@@ -30,7 +30,7 @@ Bloggs - Read
         <div class="d-flex flex-row justify-content-left align-items-center">
             <h1 class="read-h1">{{ blog.title }}</h1>
             <div class="px-5">
-                <a href="{% url 'like' user.pk blog.pk %}"><h1>Like</h1></a>
+                <a href="{% url 'like' user.id blog.id %}"><button class="like-btn"><img src="{% static 'images/like.png' %}"></button></a>
             </div>
         </div>
         <br>

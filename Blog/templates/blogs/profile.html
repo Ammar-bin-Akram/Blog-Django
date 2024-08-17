@@ -6,26 +6,25 @@ Bloggs - Profile
 {% endblock %}
 
 {% block content %}
-<div class="main-home container-fluid d-flex flex-column justify-content-center align-items-center mt-5">
+<div class="main-profile container-fluid d-flex flex-column justify-content-center align-items-center mt-5">
     <h1 class="main-h1">Your Profile</h1>
-    <div class="container d-flex flex-column justify-content-left">
-        <h2>Personal Information</h2>
-        <div>
-            <p>{{ user.username }}</p>
-            <p>{{ user.first_name }} {{ user.last_name }}</p>
-            <p>{{ user.email }}</p>
+    <div class="container d-flex flex-row justify-content-between">
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h3 class="card-title">Personal Information</h3>
+              <p class="card-text">Username: {{user.username}}</p>
+              <p class="card-text">Username: {{user.email}}</p>
+            </div>
         </div>
 
-        <h2>Your Activity</h2>
-        <div>
-            <p>Number of posts: {{ blogs|length }}</p>
-            <p>number of posts you liked: {{ blogs|length }}</p>
-            <p>Last posted on: {{ latest_blog.created_at }}</p>
-            <p>Last article posted: {{ latest_blog.title }}</p>
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h3 class="card-title">Your Activity</h3>
+              <p class="card-text">Blogs: {{ blogs|length }}</p>
+              <p class="card-text">Last posted: {{ latest_blog.created_at }}</p>
+              <p class="card-text">Last blog: {{ latest_blog.title }}</p>
+            </div>
         </div>
-
-        <h2>Blog Likes</h2>
-        <p>Total likes: {{ total_likes }} </p>
 
     </div>
 </div>

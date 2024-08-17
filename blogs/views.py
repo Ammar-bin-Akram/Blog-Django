@@ -58,9 +58,11 @@ def view_profile(request, user_id):
     return render(request, 'blogs/profile.html', context)
 
 def like_post(request, blog_id, user_id):
-    blog = Blog.objects.get(pk=blog_id)
-    user = User.objects.get(pk=user_id)
-    like = Likes(user=user, blog=blog)
+    blogId = user_id
+    userId = blog_id
+    blog = Blog.objects.get(pk=blogId)
+    user = User.objects.get(pk=userId)
+    like = Likes(blog=blog, user=user)
     like.save()
     return redirect('home')
 

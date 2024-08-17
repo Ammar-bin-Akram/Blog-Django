@@ -163,4 +163,19 @@
     background-color: darkblue;
 }
 
+.main-profile{
+    background: url('./images/background.png') center center;
+    background-repeat: repeat;
+    background-size: cover;
+    height: 95vh;
+}
 
+.like-btn{
+    background-color: transparent;
+    border: none;
+    transition: 0.3s all ease;
+}
+
+.like-btn:hover{
+    transform: scale(1.1);
+}
