@@ -8,7 +8,7 @@ Bloggs - Profile
 {% block content %}
 <div class="main-profile container-fluid d-flex flex-column justify-content-center align-items-center mt-5">
     <h1 class="main-h1">Your Profile</h1>
-    <div class="container d-flex flex-row justify-content-between">
+    <div class="container d-flex flex-row justify-content-between align-items-center">
         <div class="card" style="width: 18rem;">
             <div class="card-body">
               <h3 class="card-title">Personal Information</h3>
@@ -21,8 +21,9 @@ Bloggs - Profile
             <div class="card-body">
               <h3 class="card-title">Your Activity</h3>
               <p class="card-text">Blogs: {{ blogs|length }}</p>
-              <p class="card-text">Last posted: {{ latest_blog.created_at }}</p>
-              <p class="card-text">Last blog: {{ latest_blog.title }}</p>
+              <p class="card-text">Last posted on: {{ latest_blog.created_at }}</p>
+              <p class="card-text">Last blog Posted: {{ latest_blog.title }}</p>
+              <p class="card-text">Total Likes on posts: {{ total_likes }}</p>
             </div>
         </div>
 

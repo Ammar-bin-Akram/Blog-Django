@@ -48,10 +48,9 @@ def read_blog(request, blog_id, user_id):
 
 
 def view_profile(request, user_id):
-    user = User.objects.get(pk=user_id)
+    user = User.objects.get(id=user_id)
     blogs = Blog.objects.filter(user=user_id)
-    likes = Likes.objects.filter(user_id=user_id, blog__in=blogs)
-    total_likes = likes.count()
+    total_likes = Likes.objects.filter(user=user).count()
     latest_blog = blogs[0]
     for blog in blogs:
         if blog.created_at > latest_blog.created_at:
