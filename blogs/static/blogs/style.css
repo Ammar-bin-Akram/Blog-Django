@@ -155,14 +155,6 @@
     background-size: cover;
 }
 
-.post-btn{
-    background-color: blue;
-}
-
-.post-btn:hover{
-    background-color: darkblue;
-}
-
 .main-profile{
     background: url('./images/background.png') center center;
     background-repeat: repeat;
@@ -178,4 +170,38 @@
 
 .like-btn:hover{
     transform: scale(1.1);
+}
+
+.sign-form{
+    border: 1px solid #0d6efd;
+    backdrop-filter: blur(10px);
+}
+
+.sign-btn{
+    width: 150px;
+    height: 54px;
+    border-radius: 8px;
+    border: none;
+    font-size: 20px;
+    color: #0d6efd;
+    padding: 12px 40px;
+    background-color: #fff;
+    transition: 0.3s all ease;
+}
+
+.signup-btn{
+    width: 200px;
+    height: 54px;
+    border-radius: 8px;
+    border: none;
+    font-size: 20px;
+    color: #0d6efd;
+    padding: 12px 40px;
+    background-color: #fff;
+    transition: 0.3s all ease;
+}
+
+.sign-btn:hover, .signup-btn:hover{
+    background-color: #0d6efd;
+    color: #fff;
 }

@@ -6,10 +6,16 @@ Bloggs - Signup
 {% endblock %}
 
 {% block content %}
-<h2>Sign Up</h2>
-<form method="post">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit">Sign Up</button>
-</form>
+  <div class="main-home container-fluid d-flex flex-column justify-content-top align-items-center mt-5">
+    <h1 class="main-h1 mb-5">Sign Up</h1>
+    <div class="sign-form d-flex flex-row flex-wrap justify-content-center align-items-center p-5">
+      <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="d-flex flex-row justify-content-center">
+          <button type="submit" class="signup-btn">Sign Up</button>
+        </div>
+      </form>
+    </div>
+  </div>
 {% endblock %}
