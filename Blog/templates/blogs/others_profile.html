@@ -7,13 +7,13 @@ Bloggs - Profile
 
 {% block content %}
 <div class="main-profile container-fluid d-flex flex-column justify-content-center align-items-center mt-5">
-    <h1 class="main-h1">Your Profile</h1>
+    <h1 class="main-h1">{{ other_user.username }} Profile</h1>
     <div class="container d-flex flex-row justify-content-between align-items-center">
         <div class="card" style="width: 18rem;">
             <div class="card-body">
               <h3 class="card-title">Personal Information</h3>
-              <p class="card-text">Username: {{user.username}}</p>
-              <p class="card-text">User Email: {{user.email}}</p>
+              <p class="card-text">Username: {{ other_user.username }}</p>
+              <p class="card-text">User Email: {{ other_user.email }}</p>
             </div>
         </div>
 
