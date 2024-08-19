@@ -29,9 +29,15 @@ Bloggs - Read
     {% else %}
         <div class="d-flex flex-row justify-content-left align-items-center">
             <h1 class="read-h1">{{ blog.title }}</h1>
-            <div class="px-5">
-                <a href="{% url 'like' user.id blog.id %}"><button class="like-btn"><img src="{% static 'images/like.png' %}"></button></a>
-            </div>
+            {% if user_liked %}
+                <div class="px-5">
+                    <a href="{% url 'unlike' user.id blog.id %}"><button class="like-btn"><img src="{% static 'images/like.png' %}"></button></a>
+                </div>
+            {% else %}
+                <div class="px-5">
+                    <a href="{% url 'like' user.id blog.id %}"><button class="like-btn"><img src="{% static 'images/liked.png' %}"></button></a>
+                </div>
+            {% endif %}
         </div>
         <br>
         <div class="d-flex flex-column align-items-left">

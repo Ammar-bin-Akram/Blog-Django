@@ -6,6 +6,7 @@ from .forms import CustomUserCreationForm
 from .models import User, Blog, Likes
 import datetime
 from django.utils import timezone
+from django.db.models import Count
 
 # Create your views here
 
@@ -15,9 +16,8 @@ class SignUpView(CreateView):
     template_name = "registration/signup.html"
 
 def home(request):
-    blogs = Blog.objects.all()
-    likes = Likes.objects.all()
-    context = {'blogs': blogs, 'likes': likes}
+    blogs = Blog.objects.annotate(num_likes=Count("likes"))
+    context = {'blogs': blogs}
     return render(request, 'blogs/home.html', context)
 
 def landing(request):
@@ -39,9 +39,11 @@ def create_post(request, user_id):
         return render(request, 'blogs/create.html', context=context_create)
 
 
-def read_blog(request, blog_id):
+def read_blog(request, blog_id, user_id):
     blog = Blog.objects.get(pk=blog_id)
-    context = {'blog': blog}
+    user_liked = Likes.objects.filter(blog_id=blog_id, user_id=user_id).exists()
+    print(user_liked)
+    context = {'blog': blog, 'user_liked': user_liked}
     return render(request, 'blogs/read.html', context)
 
 
@@ -64,6 +66,14 @@ def like_post(request, blog_id, user_id):
     user = User.objects.get(pk=userId)
     like = Likes(blog=blog, user=user)
     like.save()
+    return redirect('home')
+
+
+def unlike_post(request, user_id, blog_id):
+    blog = Blog.objects.get(pk=blog_id)
+    user = User.objects.get(pk=user_id)
+    like = Likes.objects.get(blog=blog, user=user)
+    like.delete()
     return redirect('home')
 
 
