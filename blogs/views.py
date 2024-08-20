@@ -3,10 +3,11 @@ from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView
 from django.http import HttpResponse
 from .forms import CustomUserCreationForm
-from .models import User, Blog, Likes
+from .models import User, Blog, Likes, Followers
 import datetime
 from django.utils import timezone
 from django.db.models import Count
+from django.contrib import messages
 
 # Create your views here
 
@@ -119,7 +120,9 @@ def others_profile(request, blog_id):
 
 
 def follow_user(request, follower_id, user_id):
-    print(request)
-    print(follower_id)
-    print(user_id)
-    return HttpResponse(str(follower_id) + 'followed' + str(user_id))
+    followed_user = User.objects.get(pk=user_id)
+    follower = User.objects.get(pk=follower_id)
+    follow_object = Followers(follower=follower, user=followed_user)
+    follow_object.save()
+    messages.success(request, f'You followed {followed_user.username}')
+    return redirect('home')
