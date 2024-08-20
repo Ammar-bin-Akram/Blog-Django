@@ -116,3 +116,10 @@ def others_profile(request, blog_id):
             latest_blog = blog
     context = {'other_user': other_user, 'blogs': blogs_user, 'latest_blog': latest_blog, 'total_likes': total_likes}
     return render(request, 'blogs/others_profile.html', context)
+
+
+def follow_user(request, follower_id, user_id):
+    print(request)
+    print(follower_id)
+    print(user_id)
+    return HttpResponse(str(follower_id) + 'followed' + str(user_id))

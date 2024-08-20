@@ -23,3 +23,8 @@ class Blog(models.Model):
 class Likes(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     blog = models.ForeignKey(Blog, on_delete=models.CASCADE)
+
+
+class Followers(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='main_user')
+    follower = models.ForeignKey(User, on_delete=models.CASCADE, related_name='followers')
