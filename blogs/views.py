@@ -38,6 +38,7 @@ def create_post(request, user_id):
         created_at = datetime.datetime.now()
         post = Blog(title=title, content=content, created_at = created_at, user=user)
         post.save()
+        messages.success(request, f"Your post {title} has been posted.")
         return redirect('home')
     else:
         return render(request, 'blogs/create.html', context=context_create)
@@ -71,6 +72,7 @@ def like_post(request, blog_id, user_id):
     user = User.objects.get(pk=userId)
     like = Likes(blog=blog, user=user)
     like.save()
+    messages.success(request, f"You liked {blog.user.username}'s {blog.title} ")
     return redirect('home')
 
 
@@ -79,6 +81,7 @@ def unlike_post(request, user_id, blog_id):
     user = User.objects.get(pk=user_id)
     like = Likes.objects.get(blog=blog, user=user)
     like.delete()
+    messages.warning(request, f"You unliked {blog.user.username}'s post {blog.title} ")
     return redirect('home')
 
 
@@ -107,6 +110,7 @@ def delete_post(request, blog_id):
     context = {'blog': blog}
     if request.method == "POST":
         blog.delete()
+        messages.warning(request, f"Your post {blog.title} has been deleted. ")
         return redirect('home')
     else:
         return render(request, 'blogs/delete.html', context)
@@ -142,8 +146,6 @@ def unfollow_user(request, follower_id, user_id):
     followed_user = User.objects.get(pk=user_id)
     follower = User.objects.get(pk=follower_id)
     follow_object = Followers.objects.get(follower=follower, user=followed_user)
-    print(follow_object.follower)
-    print(follow_object.user)
     follow_object.delete()
     messages.warning(request, f'You unfollowed {followed_user.username}')
     return redirect('home')
