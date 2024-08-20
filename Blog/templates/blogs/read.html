@@ -42,7 +42,7 @@ Bloggs - Read
         <br>
         <div class="d-flex flex-column align-items-left">
             <div class="post-author">
-                <p>Author: <a href="{% url 'profile' blog.id %}">{{ blog.user.username }}</a></p>
+                <p>Author: <a href="{% url 'profile' blog.id user.id %}">{{ blog.user.username }}</a></p>
             </div>
             <div>
                 <p>Published On: {{ blog.created_at }}</p>

@@ -37,7 +37,11 @@ Bloggs - Profile
             </div>
         </div>
     </div>
-    <a href="{% url 'follow' other_user.id user.id %}"><button class="btn btn-success">Follow {{ other_user.username }}</button></a>
+    {% if follows %}
+      <a href="{% url 'unfollow' other_user.id user.id %}"><button class="btn btn-danger">UnFollow {{ other_user.username }}</button></a>
+    {% else %}
+      <a href="{% url 'follow' other_user.id user.id %}"><button class="btn btn-success">Follow {{ other_user.username }}</button></a>
+    {% endif %}
   </div>
 {% endblock %}
 
