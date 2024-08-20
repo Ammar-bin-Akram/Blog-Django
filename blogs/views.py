@@ -16,13 +16,16 @@ class SignUpView(CreateView):
     success_url = reverse_lazy("login")
     template_name = "registration/signup.html"
 
+
 def home(request):
     blogs = Blog.objects.annotate(num_likes=Count("likes"))
     context = {'blogs': blogs}
     return render(request, 'blogs/home.html', context)
 
+
 def landing(request):
     return render(request, 'blogs/landing.html')
+
 
 def create_post(request, user_id):
     user = User.objects.get(pk=user_id)
@@ -51,12 +54,15 @@ def view_profile(request, user_id):
     user = User.objects.get(id=user_id)
     blogs = Blog.objects.filter(user=user_id)
     total_likes = Likes.objects.filter(user=user).count()
+    followers = Followers.objects.filter(user=user).count()
+    following = Followers.objects.filter(follower=user).count()
     latest_blog = blogs[0]
     for blog in blogs:
         if blog.created_at > latest_blog.created_at:
             latest_blog = blog
-    context = {'user': user, 'blogs': blogs, 'latest_blog': latest_blog, 'total_likes': total_likes}
+    context = {'user': user, 'blogs': blogs, 'latest_blog': latest_blog, 'total_likes': total_likes, 'followers': followers, 'following': following}
     return render(request, 'blogs/profile.html', context)
+
 
 def like_post(request, blog_id, user_id):
     blogId = user_id
@@ -111,11 +117,13 @@ def others_profile(request, blog_id):
     other_user = blog.user
     blogs_user = Blog.objects.filter(user=other_user)
     total_likes = Likes.objects.filter(user=other_user).count()
+    user_followers = Followers.objects.filter(user=other_user).count()
+    user_following = Followers.objects.filter(follower=other_user).count()
     latest_blog = blogs_user[0]
     for blog in blogs_user:
         if blog.created_at > latest_blog.created_at:
             latest_blog = blog
-    context = {'other_user': other_user, 'blogs': blogs_user, 'latest_blog': latest_blog, 'total_likes': total_likes}
+    context = {'other_user': other_user, 'blogs': blogs_user, 'latest_blog': latest_blog, 'total_likes': total_likes, 'followers': user_followers, 'following': user_following}
     return render(request, 'blogs/others_profile.html', context)
 
 
